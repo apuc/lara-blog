@@ -39,35 +39,11 @@ class PostController extends Controller
             $path = $request->file('preview')->storeAs('public/images/previews', $fileNameToStore);
             $input['preview'] = $fileNameToStore;
         }
-
-
-        var_dump($input['categories']);
-
-        $postId = $post->create($input)->id;
-
+        
+        $post = $post->create($input);
         $categories = Category::find($input['categories']);
-
-        var_dump($categories->toArray());
-
-        var_dump($postId);
-
         $post->categories()->attach($categories);
-        die;
-        /* Запись категорий */
-        /*
-        foreach ($input['categories'] as $category) {
-            $params = [
-                'post_id' => $postId,
-                'category_id' => $category,
-            ];
-            //Не работает
 
-
-            // Альтернатива
-            //(new CategoryPost())->create($params);
-
-        }
-        */
         /* Сохранение тегов */
         if (!empty($input['tags'])) {
             $tagModel = new Tag();
