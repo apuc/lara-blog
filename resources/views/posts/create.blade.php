@@ -23,8 +23,8 @@
                 <input type="file" name="preview" id="preview" class="form-control" required="required" />
             </div>
             <div class="form-group">
-                <label for="summernote">Содержимое:</label>
-                <textarea name="content" id="summernote" class="form-control" required="required"></textarea>
+                <label for="editor">Содержимое:</label>
+                <textarea name="content" id="editor" class="form-control" required="required"></textarea>
             </div>
             <div class="form-group">
                 <label for="email">Категория:</label>

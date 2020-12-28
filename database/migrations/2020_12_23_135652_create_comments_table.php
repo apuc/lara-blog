@@ -10,6 +10,7 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->string('post_id')->comment('ID публикации');
             $table->string('author')->comment('Автор');
             $table->text('content')->comment('Содержимое комментария');
             $table->boolean('publish')->comment('Модерирование');

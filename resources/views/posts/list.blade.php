@@ -29,7 +29,7 @@
                     <td>{{$post->title}}</td>
                     <td>
                         @foreach($post->categories as $category)
-                            {{$category->category->name}}@if (!$loop->last),@endif
+                            {{$category->name}}@if (!$loop->last),@endif
                         @endforeach
                     </td>
                     <td>{{$post->created_at}}</td>

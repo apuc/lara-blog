@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/themes/Admin/css/adminlte.min.css">
     <link rel="stylesheet" href="/themes/Admin/css/fontawesome.css">
     <link rel="stylesheet" href="/themes/Admin/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="/themes/Admin/css/summernote-bs4.min.css">
+    <link rel="stylesheet" type="text/css" href="/themes/Admin/css/select2.min.css">
     <title>@yield('title')</title>
 </head>
 <body>
@@ -43,7 +43,7 @@
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="container">
-                    <a href="/admin/logout"><i class="fas fa-sign-out-alt"></i> Выход </a>
+                    <a href="/logout"><i class="fas fa-sign-out-alt"></i> Выход </a>
                 </div>
             </div>
             <nav class="mt-2">
@@ -87,11 +87,14 @@
 </div>
 <script type="text/javascript" src="/themes/Admin/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="/themes/Admin/js/adminlte.min.js"></script>
-<script type="text/javascript" src="/themes/Admin/js/summernote-bs4.min.js"></script>
+<script type="text/javascript" src="/themes/Admin/js/select2.min.js"></script>
+
+<script src="//cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#summernote').summernote();
-    });
+
+        $('select').select2();
+        CKEDITOR.replace('editor');
 </script>
+
 </body>
 </html>
