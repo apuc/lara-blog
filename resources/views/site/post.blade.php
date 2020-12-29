@@ -2,6 +2,11 @@
 
 @section('title', $post->title)
 
+@section('breadcrumbs')
+    <li><a href="/">Главная</a></li>
+    <li class="active">{{$post->title}}</li>
+@endsection
+
 @section('content')
     <!-- blog details area -->
     <section class="blog_details_area sec_pad">

@@ -2,6 +2,11 @@
 
 @section('title', "Поиск по запросу: $searchText")
 
+@section('breadcrumbs')
+    <li><a href="/">Главная</a></li>
+    <li class="active">Поиск по запросу: {{$searchText}}</li>
+@endsection
+
 @section('content')
     <!-- blog area -->
     <section class="blog_area bg_color sec_pad">

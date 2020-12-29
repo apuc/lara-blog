@@ -2,6 +2,8 @@
 
 @section('title', 'Главная')
 
+@section('breadcrumbs')@endsection
+
 @section('content')
 <!-- blog area -->
     <section class="blog_area bg_color sec_pad">

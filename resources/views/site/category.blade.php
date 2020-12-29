@@ -2,6 +2,11 @@
 
 @section('title', $currentCategory->name)
 
+@section('breadcrumbs')
+    <li><a href="/">Главная</a></li>
+    <li class="active">{{$currentCategory->name}}</li>
+@endsection
+
 @section('content')
     <!-- blog area -->
     <section class="blog_area bg_color sec_pad">

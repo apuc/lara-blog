@@ -62,8 +62,7 @@
             <div class="breadcrumb_content text-center">
                 <h1>Blog Classic</h1>
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Blog</li>
+                    @yield('breadcrumbs')
                 </ol>
             </div>
         </div>
