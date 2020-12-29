@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="blog_button_inner">
-                            <a href="#" class="theme_btn gray_btn">Читать далее</a>
+                            <a href="{{route('site.post', $post->id)}}" class="theme_btn gray_btn">Читать далее</a>
                             <a href="#" class="social_btn gray_btn"><i class="flaticon-heart"></i> {{$post->likes}}</a>
                             <a href="#" class="social_btn gray_btn"><i class="flaticon-talk"></i></a>
                         </div>

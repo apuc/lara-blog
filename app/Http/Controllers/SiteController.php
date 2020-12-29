@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Comment\CreateRequest;
-use App\Models\{Category, Comment, Post};
+use App\Models\{Category, Comment, Like, Post};
 use GuzzleHttp\Psr7\Request;
 
 class SiteController extends Controller
@@ -62,16 +62,29 @@ class SiteController extends Controller
         $input['post_id'] = $id;
         $input['publish'] = 0;
         (new Comment())->create($input);
-        return redirect(route('site.commentStore', $id));
+        return redirect(route('site.post', $id));
     }
 
     public function postLike($id)
     {
         $ip = request()->ip();
         $userAgent = $_SERVER['HTTP_USER_AGENT'];
-        //var_dump($ip);
-        //die;
+        $like = Like::where('post_id', $id)
+            ->where('ip', $ip)
+            ->where('user_agent', $userAgent)
+            ->first();
         $post = Post::find($id);
-        $post->increment('likes');
+        if (!$like) {
+            $post->increment('likes');
+            (new Like())->create([
+                'post_id' => $id,
+                'ip' => $ip,
+                'user_agent' => $userAgent,
+            ]);
+        } else {
+            Like::find($like->id)->delete();
+            $post->decrement('likes');
+        }
+        return redirect(route('site.post', $id));
     }
 }
