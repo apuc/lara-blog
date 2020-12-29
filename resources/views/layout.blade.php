@@ -33,14 +33,15 @@
                     </span>
                 </span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto menu">
-                    <li class="nav-item">
+                    <li class="nav-item  @if(Route::currentRouteName() == 'index') active @endif">
                         <a class="nav-link" href="/">Главная</a>
                     </li>
                     @foreach($categories as $category)
-                    <li class="nav-item">
+                    <li class="nav-item
+                        @if(Route::currentRouteName() == 'site.category'
+                            && Route::current()->parameters()['id'] == $category->id) active @endif">
                         <a class="nav-link" href="{{route('site.category', $category->id)}}">{{$category->name}}</a>
                     </li>
                     @endforeach
