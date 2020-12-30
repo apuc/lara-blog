@@ -116,18 +116,23 @@
     </section>
     <!--comments area-->
     <!--blog_comment_box area-->
+
     <section class="blog_comment_box bg_color sec_pad">
         <div class="container">
             <div class="custom_box">
-                <form action="{{route('site.commentStore', $post->id)}}" method="POST" class="row comment_form">
+                <form id="comment-form" action="{{route('site.commentStore', $post->id)}}" data-post="{{$post->id}}"
+                      method="POST" class="row comment_form">
+                    <div id="success-status" class="col-md-12 form-group"></div>
                     <div class="col-md-12 form-group">
+                        <div id="author-error" class="error-wrap"></div>
                         <input type="text" class="form-control" id="name" placeholder="Ваше имя" name="author">
                     </div>
                     <div class="col-md-12 form-group">
+                        <div id="content-error" class="error-wrap"></div>
                         <textarea class="form-control message" placeholder="Комментрарий" name="content"></textarea>
                     </div>
                     <div class="col-lg-12 text-right">
-                        <button class="btn theme_btn" type="submit">Отправить комментарий</button>
+                        <button id="comment-send" class="btn theme_btn">Отправить комментарий</button>
                     </div>
                     @csrf
                 </form>

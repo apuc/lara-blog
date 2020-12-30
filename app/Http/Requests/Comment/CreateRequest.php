@@ -18,4 +18,12 @@ class CreateRequest extends FormRequest
             'content' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'author.required' => 'Ваше имя не заполнено',
+            'content.required' => 'Комментарий не заполнен',
+        ];
+    }
 }

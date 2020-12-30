@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Comment\CreateRequest;
 use App\Models\{Category, Comment, Like, Post};
-use GuzzleHttp\Psr7\Request;
 
 class SiteController extends Controller
 {
@@ -62,7 +61,8 @@ class SiteController extends Controller
         $input['post_id'] = $id;
         $input['publish'] = 0;
         (new Comment())->create($input);
-        return redirect(route('site.post', $id));
+        return response()->json('Ваш комментарий отправлен на модерацию');
+        //return redirect(route('site.post', $id));
     }
 
     public function postLike($id)

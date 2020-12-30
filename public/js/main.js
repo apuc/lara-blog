@@ -1,6 +1,6 @@
 ;(function($){
     'use strict'
-    
+
     /*---------Navbar js-----------*/
     function navbarFixed() {
         if ($('#header').length) {
@@ -15,7 +15,7 @@
         };
     };
     navbarFixed();
-    
+
     /*---------search js-----------*/
     $('.search').on('click', function () {
         $('body').addClass('open');
@@ -28,7 +28,7 @@
         $('body').removeClass('open');
         return false;
     });
-    
+
     /*---------gallery isotope js-----------*/
     function galleryMasonry(){
         if ( $('#project_gallery').length ){
@@ -63,7 +63,7 @@
         }
     }
     galleryMasonry();
-    
+
     function popupGallery() {
         if ($(".img_popup").length) {
             $(".img_popup").each(function () {
@@ -93,7 +93,7 @@
     }
     popupGallery();
 
-    
+
     if ($('.testimonial_inner').length) {
         $('.testimonial_inner').slick({
             autoplay: false,
@@ -105,7 +105,7 @@
             arrows: true,
         });
     }
-    
+
     function parallax() {
         var windowWidth = $(window).width();
         if ($(".parallax_effect").length){
@@ -117,20 +117,20 @@
         }
     }
     parallax();
-    
+
     /* Counter Js */
     function counterUp(){
-        if ( $('.counter').length ){ 
+        if ( $('.counter').length ){
             $('.counter').counterUp({
                 delay: 1,
                 time: 250
             });
         };
-    };  
-    
+    };
+
     counterUp();
-    
-    
+
+
     function Slider_one() {
         var carousel = $("#main_slider");
         if (carousel.length) {
@@ -155,7 +155,7 @@
         }
     }
     Slider_one();
-    
+
     function Slider_two() {
         var carousel = $(".main_slider_three");
         if (carousel.length) {
@@ -178,7 +178,7 @@
         }
     }
     Slider_two();
-    
+
     /*--------- WOW js-----------*/
      function bodyScrollAnimation() {
          if ($('.wow').length) {
@@ -186,5 +186,25 @@
          }
      }
      bodyScrollAnimation();
-    
+
+     /* Отправка комментария */
+    $('#comment-form').submit(function (e) {
+        e.preventDefault();
+        var postId = $(this).data('post');
+        var data = $(this).serialize();
+        var posting = $.post('/comment/store/'+postId, data, function (responce){
+            $('.error-wrap').empty();
+            $('#success-status').empty();
+            $('#success-status').html('<div class="alert alert-success">'+responce+'</div>');
+            $('#comment-form')[0].reset();
+        }, 'json');
+        posting.fail(function (response){
+            $('#success-status').empty();
+            $('.error-wrap').empty();
+            $.each(response.responseJSON.errors, function(key, error){
+                $('#'+key+'-error').html('<div class="alert alert-danger">'+error+'</div>');
+            });
+        });
+    });
+
 })(jQuery)
