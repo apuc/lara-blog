@@ -62,7 +62,6 @@ class SiteController extends Controller
         $input['publish'] = 0;
         (new Comment())->create($input);
         return response()->json('Ваш комментарий отправлен на модерацию');
-        //return redirect(route('site.post', $id));
     }
 
     public function postLike($id)
@@ -81,10 +80,11 @@ class SiteController extends Controller
                 'ip' => $ip,
                 'user_agent' => $userAgent,
             ]);
+            return response()->json(['action' => 'like']);
         } else {
             Like::find($like->id)->delete();
             $post->decrement('likes');
+            return response()->json(['action' => 'dislike']);
         }
-        return redirect(route('site.post', $id));
     }
 }

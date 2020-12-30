@@ -207,4 +207,25 @@
         });
     });
 
+    // Лайк/Дизлайк публикации
+    $('.add-like').click(function (e){
+        e.preventDefault();
+        var postId = $(this).data('post');
+        var likeCounter = $('.like-count').text();
+        $.ajax({
+            'url': '/like/'+postId,
+            'success': function (response) {
+                if (response.action == 'like') {
+                    likeCounter++;
+                }
+                if (response.action == 'dislike') {
+                    likeCounter--;
+                }
+                $('.like-count').html(likeCounter);
+            },
+            'dataType': 'json',
+        });
+
+    });
+
 })(jQuery)

@@ -34,9 +34,9 @@
                                 <i class="flaticon-talk"></i>
                                 {{count($post->comments)}}
                             </div>
-                            <a href="{{route('site.postLike', $post->id)}}" class="theme_btn gray_btn">
+                            <a href="{{route('site.postLike', $post->id)}}" data-post="{{$post->id}}" class="add-like theme_btn gray_btn">
                                 <i class="flaticon-heart"></i>
-                                {{$post->likes}}
+                                <span class="like-count">{{$post->likes}}</span>
                             </a>
                         </div>
                     </div>
